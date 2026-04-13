@@ -9,14 +9,16 @@
 
 <body>
     <h1>Введите промпт для изображения:</h1>
+    <div>
+        <textarea id="prompt"></textarea>
+        <span id="status"></span>
+        <button id="generate">Сгенерировать</button>
+    </div>
     <img id="resultImg" src="" alt="No image">
-    <textarea id="prompt"></textarea>
-    <span id="status"></span>
-    <button id="generate">Сгенерировать</button>
 
 
-
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="./loadImages.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
