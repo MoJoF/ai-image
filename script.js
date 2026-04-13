@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const generateBtn = document.querySelector('#generate')
     generateBtn.onclick = async () => {
         const status = document.querySelector('#status')
@@ -16,15 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
             throw new Error('Ошибка генерации')
         }
 
-        const blob = await response.blob()
-        const reader = new FileReader()
-        reader.readAsDataURL(blob)
-        
-        reader.onloadend = () => {
-            const base64data = reader.result
-            document.querySelector('img').src = base64data
+        const data = await response.json()
+
+        if (data.status === "success") {
+            document.querySelector('img').src = data.publicUrl
             status.textContent = 'Success'
         }
-
+        else if (data.status === "error") {
+            alert(data.message)
+        }
     }
 })
