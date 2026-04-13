@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image</title>
+</head>
+
+<body>
+    <h1>Введите промпт для изображения:</h1>
+    <img src="" alt="No image">
+    <textarea id="prompt"></textarea>
+    <span id="status"></span>
+    <button id="generate">Сгенерировать</button>
+    <script src="./script.js"></script>
+</body>
+
+</html>
+
+<!-- 
+prompt - запрос. обязательно
+negative_prompt - негативный запрос (чего не хотим видеть на картинке)
+num_inference_steps - количество шагов для генерации (int 1 - 50)
+
+guidance_scale - насколько строго результат должен соответствовать запросу
+    (float, 1 - 20. default = 7.5)
+    Лучше 7-10. Больше 15 - перенасыщенные цвета
+                Меньше 5 - очень плохое будет соответствие
+
+seed - начальный шум (int)
+
+strength - насколько абстрагироваться от картинки-референса, если такая есть
+    (float 0 - 1)
+
+height / width (int) - ширина и высота
+
+
+const data = await request.json();
+
+const options = {
+  prompt: data.prompt,
+  negative_prompt: data.negative_prompt || "blurry, low quality, distorted", // Дефолтный негатив
+  num_inference_steps: data.steps || 30,
+  guidance_scale: data.guidance || 7.5,
+  seed: data.seed || Math.floor(Math.random() * 1000000) // Случайный, если не задан
+};
+
+const response = await env.AI.run('@cf/stabilityai/stable-diffusion-xl-base-1.0', options);
+-->
