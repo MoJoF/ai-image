@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = await response.json()
 
         if (data.status === "success") {
-            document.querySelector('img').src = data.publicUrl
+            document.querySelector('#resultImg').src = data.publicUrl
             status.textContent = 'Success'
         }
         else if (data.status === "error") {
