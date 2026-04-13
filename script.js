@@ -1,4 +1,25 @@
+let files = []
+
+const r = await fetch('https://ai.omyraucy.workers.dev/', {
+    method: "GET",
+    headers: { 'Content-Type': 'application/json' }
+})
+
+if (!r.ok) { throw new Error('Ошибка получения изображений') }
+
+const d = await r.json()
+
+if (d.status === 'success') files = d.files
+
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Получение сгенерированных изображений
+    files.forEach(f => {
+        const img = document.createElement('img')
+        img.src = f
+        document.body.appendChild(img)
+    })
+
     const generateBtn = document.querySelector('#generate')
     generateBtn.onclick = async () => {
         const status = document.querySelector('#status')
